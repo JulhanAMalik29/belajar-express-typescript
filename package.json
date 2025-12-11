@@ -7,7 +7,17 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "check-types": "tsc --noEmit --pretty",
+    "check-lint": "eslint . --ext .ts,.js,.jsx,.tsx",
+    "check-format": "prettier --check ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged ng lint ng test",
+      "pre-push": "ng build --aot true"
+    }
   },
   "keywords": [],
   "author": "",
@@ -24,9 +34,11 @@
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.5.0",
+    "husky": "^9.1.7",
     "jiti": "^2.6.1",
     "nodemon": "^3.1.11",
     "prettier": "^3.7.4",
+    "pretty-quick": "^4.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.49.0"
